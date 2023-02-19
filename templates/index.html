@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Channel and Video Count</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>Channel Name</th>
+			<th>Video Count</th>
+		</tr>
+		{% for row in data %}
+		<tr>
+			<td>{{ row['channel_name'] }}</td>
+			<td>{{ row['video_count'] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+    <form action="/" method="POST">
+        <label for="video_id">Enter YouTube Video url:</label>
+        <input type="text" id="video_id" name="video_id">
+        <button type="submit">Get Video Info</button>
+      </form>
+      {% if video_title %}
+        <h1>Video Title: {{ video_title }}</h1>
+        <!-- <h4>URL: {{ url }}</h4> -->
+        <p>Description: {{ video_details }}</p>
+        <p>Likes count: {{ like_count }}</p>
+        <p>Comments count: {{ comment_count }}</p>
+      {% endif %}
+	  <p>Comments:</p>
+    <ul>
+        {% for comment in comments %}
+        <li>{{ comment }} - {{ author }}</li>
+        {% endfor %}
+	</ul>
+
+	
+</body>
+</html>
